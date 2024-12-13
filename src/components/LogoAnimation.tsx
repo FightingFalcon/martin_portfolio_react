@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-// import anime from 'animejs/lib/anime.es.js';
 import anime from 'animejs';
 
 const LogoAnimation: React.FC = () => {
   useEffect(() => {
+    const SPEED_FACTOR = 1; 
+
     const logoEl = document.querySelector('.logo-animation') as HTMLElement | null;
     const innerWidth = window.innerWidth;
     const maxWidth = 840;
@@ -32,7 +33,7 @@ const LogoAnimation: React.FC = () => {
         translateY: () => anime.random(-15, 15) + 'vh',
         scale: [1, 0],
         easing: 'easeOutCirc',
-        duration: 1000,
+        duration: 1000 * SPEED_FACTOR,
         complete: () => {
           document.querySelectorAll('.particle').forEach(p => p.remove());
         }
@@ -45,7 +46,7 @@ const LogoAnimation: React.FC = () => {
         targets: '.krumelur',
         scale: [0.5, 1, 0],
         easing: 'easeInOutQuad',
-        duration: 500,
+        duration: 500 * SPEED_FACTOR,
         complete: () => {
           explodeParticles();
         }
@@ -57,15 +58,15 @@ const LogoAnimation: React.FC = () => {
       anime({
         targets: '.triangle',
         opacity: [0, 1],
-        duration: 4000,
+        duration: 4000 * SPEED_FACTOR,
       });
       anime({
         targets: '.triangle',
         translateY: [0, -10, 0],
-        duration: 800,
+        duration: 800 * SPEED_FACTOR,
         easing: 'easeInOutQuad',
         loop: true,
-        delay: 1000,
+        delay: 1000 * SPEED_FACTOR,
       });
     }
 
@@ -88,84 +89,91 @@ const LogoAnimation: React.FC = () => {
     }
 
     logoTimeline
+      // dot-i animation
       .add({
         targets: '.dot-i',
-        translateY: { value: [-250, 0], duration: 1250, elasticity: 400 },
+        translateY: { value: [-250, 0], duration: 1250 * SPEED_FACTOR, elasticity: 400 },
         rotate: {
           value: [-90, 0],
-          duration: 500,
+          duration: 500 * SPEED_FACTOR,
           easing: 'linear'
         },
         scale: [
-          { value: [0.5, 1], duration: 1200, easing: 'easeOutQuart' },
+          { value: [0.5, 1], duration: 1200 * SPEED_FACTOR, easing: 'easeOutQuart' },
         ],
-        delay: 1200,
+        delay: 1200 * SPEED_FACTOR,
         offset: 0
-      }, '+=750')
+      }, 750 * SPEED_FACTOR) 
+
+      // fill.in animation
       .add({
         targets: '.fill.in',
         strokeDashoffset: {
           value: [anime.setDashoffset, 0],
-          duration: 600,
-          delay: (el, i) => 700 + (i * 100),
+          duration: 600 * SPEED_FACTOR,
+          delay: (el, i) => (700 + i * 100) * SPEED_FACTOR,
           easing: 'easeOutQuart',
         },
         stroke: {
           value: ['#FFF', (el) => (el.parentNode as SVGGElement).getAttribute('stroke')!],
-          duration: 500,
-          delay: 500,
+          duration: 500 * SPEED_FACTOR,
+          delay: 500 * SPEED_FACTOR,
           easing: 'easeInQuad'
         },
         opacity: {
           value: 0,
           duration: 1,
-          delay: (el, i) => 5500 + (i * 80),
+          delay: (el, i) => (5500 + i * 80) * SPEED_FACTOR,
         },
         offset: 0
-      }, 250)
+      }, 250 * SPEED_FACTOR)
+
+      // krumelur animation
       .add({
         targets: '.krumelur',
-        opacity: {
-          value: 1,
-        },
+        opacity: { value: 1 },
         translateX: {
-          duration: 250,
-          delay: 500,
+          duration: 250 * SPEED_FACTOR,
+          delay: 500 * SPEED_FACTOR,
           value: 60,
           easing: 'easeOutQuint',
         },
         translateY: {
-          duration: 250,
-          delay: 1000,
+          duration: 250 * SPEED_FACTOR,
+          delay: 1000 * SPEED_FACTOR,
           value: 60,
           easing: 'easeOutBack'
         },
         rotate: {
           value: 360,
-          delay: 500,
-          duration: 510,
+          delay: 500 * SPEED_FACTOR,
+          duration: 510 * SPEED_FACTOR,
           easing: 'easeOutQuint',
         },
         scale: {
           value: 0.5,
-          delay: 1000,
-          duration: 250,
+          delay: 1000 * SPEED_FACTOR,
+          duration: 250 * SPEED_FACTOR,
         }
-      }, '-=250')
+      }, `-=${250 * SPEED_FACTOR}`)
+
+      // icon-text animation
       .add({
         targets: ['.icon-text path', '.icon-text polygon'],
-        opacity: { value: [0, 1], duration: 100, easing: 'linear' },
-        delay: (el, i) => 3000 + (i * 20),
+        opacity: { value: [0, 1], duration: 100 * SPEED_FACTOR, easing: 'linear' },
+        delay: (el, i) => (3000 + i * 20) * SPEED_FACTOR,
         offset: 0
-      }, -250)
+      }, -250 * SPEED_FACTOR)
+
+      // letter-e animation
       .add({
         targets: '.letter-e',
         translateX: {
-          duration: 100,
+          duration: 100 * SPEED_FACTOR,
           value: -16,
           easing: 'easeOutQuint'
         },
-      }, '-=225');
+      }, `-=${225 * SPEED_FACTOR}`);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
