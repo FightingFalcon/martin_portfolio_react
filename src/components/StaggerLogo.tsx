@@ -1,10 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import anime from "animejs";
 
-const StaggerLogo: React.FC = () => {
+interface StaggerLogoProps {
+  gridItemColor?: string;
+  logoPath?: string;
+  logoSize?: number; // Size in pixels
+}
+
+const StaggerLogo: React.FC<StaggerLogoProps> = ({
+  gridItemColor = "#4550ab",
+  logoPath = "/cryptobase.svg",
+  logoSize = 150,
+}) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const animationRef = useRef<anime.AnimeInstance | null>(null);
   const [isMostlyVisible, setIsMostlyVisible] = useState(false);
+
   const gridItemSize = 24;
   const columns = 15;
   const rows = 15;
@@ -24,7 +35,6 @@ const StaggerLogo: React.FC = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         const isInView = entry.intersectionRatio >= 0.75;
-        console.log("Visibility Update:", isInView);
         setIsMostlyVisible(isInView);
       },
       { root: null, threshold: 0.75 }
@@ -40,14 +50,11 @@ const StaggerLogo: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container || !animationRef.current) return;
+    if (!animationRef.current) return;
 
     if (isMostlyVisible) {
-      console.log("Playing Animation");
       animationRef.current.play();
     } else {
-      console.log("Pausing Animation");
       animationRef.current.pause();
     }
   }, [isMostlyVisible]);
@@ -61,11 +68,10 @@ const StaggerLogo: React.FC = () => {
       .map((_, index) => {
         const row = Math.floor(index / columns);
         const col = index % columns;
-
         const isWhiteCell =
-          (row === 0 && (col === 0 || col === 1 || col === 2 || col === 3)) ||
-          (row === 1 && (col === 0 || col === 1 || col === 2)) ||
-          (row === 2 && (col === 0 || col === 1)) ||
+          (row === 0 && col <= 3) ||
+          (row === 1 && col <= 2) ||
+          (row === 2 && col <= 1) ||
           (row === 3 && col === 0);
 
         return `<div class="grid-item ${
@@ -97,8 +103,8 @@ const StaggerLogo: React.FC = () => {
 
     const anim = anime({
       targets: gridItems,
-      scale: (el, i) => (distances[i] <= 5 ? [1, 0] : 1),
-      opacity: (el, i) => (distances[i] <= 5 ? [1, 0] : 1),
+      scale: (_: HTMLElement, i: number) => (distances[i] <= 5 ? [1, 0] : 1),
+      opacity: (_: HTMLElement, i: number) => (distances[i] <= 5 ? [1, 0] : 1),
       easing: "easeOutSine",
       autoplay: false,
       delay: anime.stagger(100, { grid: [columns, rows], from: "center" }),
@@ -113,22 +119,20 @@ const StaggerLogo: React.FC = () => {
       ref={containerRef}
       style={
         {
-          "--grid-item-color": "#4550ab",
+          "--grid-item-color": gridItemColor,
           height: "100%",
         } as React.CSSProperties
       }
     >
       <div className="stagger-grid flex flex-wrap justify-center"></div>
       <img
-        src="/cryptobase.svg"
+        src={logoPath}
         alt="Logo"
-        width="150px"
-        height="150px"
+        width={logoSize}
+        height={logoSize}
         style={{
-          opacity: isMostlyVisible ? 1 : 0, // Direct opacity control
-          transition: isMostlyVisible
-            ? "opacity 0.5s .5s" // 1s delay when becoming visible
-            : "opacity 0.5s",
+          opacity: isMostlyVisible ? 1 : 0,
+          transition: isMostlyVisible ? "opacity 0.5s .5s" : "opacity 0.5s",
           position: "absolute",
           top: "50%",
           left: "50%",
