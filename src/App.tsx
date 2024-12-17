@@ -24,7 +24,7 @@ function App() {
         >
           <div className="w-full">
             <div className="portfolio-item-title pt-10 pb-10 border-b-4 border-white p-4">
-              <h2 className="uppercase tracking-widest font-bebas text-white text-8xl text-center">
+              <h2 className="uppercase tracking-widest text-white text-8xl text-center">
                 CAPTURE RACE
               </h2>
               <h6 className="text-xl">(In Development)</h6>
