@@ -179,7 +179,8 @@ const LogoAnimation: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ height: '100vh' }} className="logo-container">
+    // <div style={{ height: '100vh' }} className="logo-container">
+    <div className="logo-container flex items-center justify-center h-screen relative">
       <SocialIcons />
       <div className="logo-animation">
         <div className="letters" style={{ opacity: 0, visibility: 'hidden' }}>
