@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import anime from 'animejs';
 import SocialIcons from './SocialIcons';
-import PerspectiveText from './PerspectiveText';
 
 const LogoAnimation: React.FC = () => {
   useEffect(() => {
@@ -264,7 +263,6 @@ const LogoAnimation: React.FC = () => {
         </div>
       </div>
       <div className="triangle"></div>
-      <PerspectiveText />
     </div>
   );
 };
