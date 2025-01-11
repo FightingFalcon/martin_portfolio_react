@@ -3,7 +3,7 @@ export const COLORS = {
   KIDICA_RED: '#e3030a',
   TIPSY_TOWN_GREEN: '#94c11f',
   CAPTURE_RACE_PINK: '#ff1a5d',
-  KETONEAN_BEIGE: '#ca5973ff',
+  KETONEAN_PURPLE: '#ca5973ff',
   PORTFOILIO_GREEN: '#1ce2b2ff',
   HOUSE_OF_CHILI_BROWN: '#be292e',
 };

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import anime from 'animejs';
+import SocialIcons from './SocialIcons';
+import PerspectiveText from './PerspectiveText';
 
 const LogoAnimation: React.FC = () => {
   useEffect(() => {
@@ -179,6 +181,7 @@ const LogoAnimation: React.FC = () => {
 
   return (
     <div style={{ height: '100vh' }} className="logo-container">
+      <SocialIcons />
       <div className="logo-animation">
         <div className="letters" style={{ opacity: 0, visibility: 'hidden' }}>
           <div className="letter letter-m1">
@@ -261,6 +264,7 @@ const LogoAnimation: React.FC = () => {
         </div>
       </div>
       <div className="triangle"></div>
+      <PerspectiveText />
     </div>
   );
 };

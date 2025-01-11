@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" width="182.20944mm" height="43.056885mm" viewBox="0 0 182.20944 43.056885" version="1.1" id="svg1">
+  <defs id="defs1"></defs>
+  <g id="layer1" transform="translate(-18.637959,-129.97588)">
+    <g id="g11">
+      <g fill="none" fill-rule="evenodd" stroke="#1ce2b2" id="g2" transform="matrix(0.26458333,0,0,0.26458333,18.371624,130.17027)">
+        <path class="fill in" stroke-width="40" d="M 103.91541,161 V 1" id="path1"></path>
+        <path class="fill in" stroke-width="40" d="m 123.91541,20.311186 h -80 L 21.00662,65.005346 V 162" id="path3"></path>
+      </g>
+      <g fill="none" fill-rule="evenodd" stroke="#ffffff" id="g4" transform="matrix(0.26458333,0,0,0.26458333,40.247638,130.12911)">
+        <path class="fill in" stroke-width="40" d="M 103.91541,161 V 1" id="path2"></path>
+        <path class="fill in" stroke-width="40" d="m 123.91541,20.311186 h -80 L 21.00662,65.005346 V 162" id="path4"></path>
+      </g>
+      <g fill="none" fill-rule="evenodd" stroke="#fb155a" id="g5" transform="matrix(0.26458333,0,0,0.26458333,62.101596,130.08552)">
+        <path class="fill in" stroke-width="40" d="m 142.13574,162 -0.27434,-142.061874 -97.634838,0.37306 -22.90879,44.69416 -0.0055,77.126394 58.721124,-0.30296" id="path5"></path>
+      </g>
+      <g fill="none" fill-rule="evenodd" stroke="#1ce2b2" id="g6" transform="matrix(0.26450196,0,0,0.26550304,92.237216,129.94214)">
+        <path class="fill in" stroke-width="40" d="m 131.16756,20.383361 h -80 l -22.90879,44.69416 v 96.920219" id="path6"></path>
+      </g>
+      <g fill="none" fill-rule="evenodd" stroke="#ffffff" id="g8" transform="matrix(0.26458333,0,0,0.26458333,116.02627,130.06722)">
+        <path class="fill in" stroke-width="40" d="M 21,-0.08804972 V 161" id="path7"></path>
+        <path class="fill in" stroke-width="40" d="M 81,61 H 1" id="path8"></path>
+      </g>
+      <g fill="none" fill-rule="evenodd" stroke="#fb155a" id="g9" transform="matrix(0.26458333,0,0,0.26458333,137.29517,130.0928)">
+        <path class="fill in" stroke-width="40" d="M 21,161 20.613365,81" id="path9" style="display:inline"></path>
+      </g>
+      <g fill="none" fill-rule="evenodd" stroke="#fb155a" id="g9-6" transform="matrix(0.2700843,0,0,0.13393063,137.18071,119.28671)">
+        <path style="color:#000000;fill:#fb155a;-inkscape-stroke:none" d="M 40.613281,80.904297 16.713148,80.319293 1.0249012,115.87625 1,161.0957 41,160.9043 Z" id="path9-0"></path>
+      </g>
+      <g fill="none" fill-rule="evenodd" stroke="#1ce2b2" id="g10" transform="matrix(0.26458333,0,0,0.26458333,157.91943,130.08048)">
+        <path class="fill in" stroke-width="40" d="M 142.24771,162 141.73228,65.005346 118.82349,20.311186 20.8775,19.938126 V 162" id="path10"></path>
+      </g>
+    </g>
+  </g>
+</svg>
+
