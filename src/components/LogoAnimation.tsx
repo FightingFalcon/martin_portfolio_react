@@ -111,7 +111,7 @@ const LogoAnimation: React.FC = () => {
         strokeDashoffset: {
           value: [anime.setDashoffset, 0],
           duration: s(600),
-          delay: (el : HTMLElement, i: number) => s(700 + i * 100),
+          delay: (_el : HTMLElement, i: number) => s(700 + i * 100),
           easing: 'easeOutQuart',
         },
         stroke: {
@@ -123,7 +123,7 @@ const LogoAnimation: React.FC = () => {
         opacity: {
           value: 0,
           duration: 1,
-          delay: (el: HTMLElement, i: number) => s(5500 + i * 80),
+          delay: (_el: HTMLElement, i: number) => s(5500 + i * 80),
         },
         offset: 0
       }, s(250))

@@ -1,7 +1,7 @@
 import React from 'react';
 import StaggerLogo from './StaggerLogo';
 import PortfolioItemDescription from './PortfolioItemDescription';
-import { getMDXComponent } from 'mdx-bundler/client';
+import { useMDXComponent } from 'mdx-bundler/client';
 
 interface PortfolioItemProps {
   portfolioData: {
@@ -18,7 +18,7 @@ interface PortfolioItemProps {
 }
 
 const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolioData }) => {
-  const MDXContent = getMDXComponent(portfolioData.text);
+  const MDXContent = useMDXComponent(portfolioData.text);
 
   return (
     <div className="flex w-screen h-screen overflow-hidden">
@@ -34,7 +34,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolioData }) => {
         subtitle={portfolioData.subtitle}
         inDevelopment={portfolioData.inDevelopment}
         text={<MDXContent />}
-        carouselItems={portfolioData.carouselItems}
+        carouselItems={portfolioData.carouselItems || []}
         backgroundColor={portfolioData.backgroundColor}
       />
     </div>
