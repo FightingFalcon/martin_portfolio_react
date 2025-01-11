@@ -72,7 +72,7 @@ function App() {
           <br />
         </>
       ),
-      subtitle: "Go to website",
+      subtitle: "Visit website",
       subtitle_url: "www.baldseagullbrigade.com",
       logoPath: "/bsb.svg",
       logoSize: 160,
@@ -146,7 +146,7 @@ function App() {
         </>
       ),
       logoPath: "/house_of_chili.svg",
-      subtitle: "Go to website",
+      subtitle: "Visit website",
       subtitle_url: "house-of-chili-vite.vercel.app",
       logoSize: 190,
       gridItemColor: COLORS.HOUSE_OF_CHILI_BROWN,
@@ -179,23 +179,35 @@ function App() {
       carouselItems: [
         <CarouselItem key="1">
           <div className="w-full aspect-w-16 aspect-h-9">
-            <iframe src="https://player.vimeo.com/video/1045768463?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"></iframe>
+            <iframe 
+              src="https://player.vimeo.com/video/1045768463?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              >
+            </iframe>
           </div>
         </CarouselItem>,
         <CarouselItem key="2">
           <ExpandableImage
-            src="/kidica1.jpg"
+            src="https://ladgb4x03qcbnupz.public.blob.vercel-storage.com/kidica1-AiMWJ6RBHyoWQSr6QiBqOegh0NbQJm.jpg"
             alt="Description of the image"
             thumbnailSize={150} // Optional: specify the thumbnail size
           />
         </CarouselItem>,
         <CarouselItem key="3">
-        <ExpandableImage
-          src="/kidica2.jpg"
-          alt="Description of the image"
-          thumbnailSize={150} // Optional: specify the thumbnail size
-        />
-      </CarouselItem>,
+          <ExpandableImage
+            src="https://ladgb4x03qcbnupz.public.blob.vercel-storage.com/kidica2-Lx0yac6wRq5Cv6Ls7pZh9PuRHTxtP1.jpg"
+            alt="Description of the image"
+            thumbnailSize={150} // Optional: specify the thumbnail size
+          />
+        </CarouselItem>,
+        <CarouselItem key="4">
+          <ExpandableImage
+            src="https://ladgb4x03qcbnupz.public.blob.vercel-storage.com/Ida_2_Profil-1kXnuA98z1WsVM19zI8zxbrmWk8Lk2.jpg"
+            alt="Description of the image"
+            thumbnailSize={150} // Optional: specify the thumbnail size
+          />
+        </CarouselItem>,
       ],
     },
     {
