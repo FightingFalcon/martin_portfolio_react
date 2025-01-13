@@ -188,8 +188,8 @@ const LogoAnimation: React.FC = () => {
   return (
     <div className="logo-container">
       <SocialIcons />
-      <div className="logo-animation flex items-center justify-center w-full transform-origin-center">
-        <div className="letters relative" style={{ opacity: 0, visibility: 'hidden' }}>
+      <div className="logo-animation">
+        <div className="letters" style={{ opacity: 0, visibility: 'hidden' }}>
           <div className="letter letter-m1">
             <svg viewBox="0 0 162 162">
               <g fill="none" fillRule="evenodd" stroke="#1CE2B2">

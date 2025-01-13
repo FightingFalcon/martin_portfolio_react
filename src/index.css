@@ -66,13 +66,12 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.logo-container {
+/* .logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  max-width: 100%;
-  width: auto;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -85,6 +84,25 @@ button:focus-visible {
   position: relative;
   margin: 0;
   transform-origin: center center;
+} */
+
+.logo-container {
+  display: flex;
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  height: 100vh;
+  width: 100%;
+  position: relative; /* For absolute positioning of children */
+}
+
+.logo-animation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh; 
+  position: relative; /* Changed to relative */
+  margin: 0;
 }
 
 .letters {
