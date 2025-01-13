@@ -278,7 +278,7 @@ function App() {
   return (
     <>
       <LogoAnimation />
-      {/* {projects.map((project, index) => (
+      {projects.map((project, index) => (
         <div
           key={project.id}
           className={`flex w-screen h-screen overflow-hidden ${
@@ -332,7 +332,7 @@ function App() {
             </div>
           </div>
         </div>
-      ))} */}
+      ))}
       <Footer />
     </>
   );
