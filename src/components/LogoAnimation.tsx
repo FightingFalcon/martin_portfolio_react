@@ -5,12 +5,23 @@ import SocialIcons from './SocialIcons';
 const LogoAnimation: React.FC = () => {
   useEffect(() => {
     const SPEED_FACTOR = 0.9;
-    const s = (value: number) => value * SPEED_FACTOR; // Helper function: multiply any numeric value by SPEED_FACTOR
+    const s = (value: number) => value * SPEED_FACTOR;
 
-    const logoEl = document.querySelector('.logo-animation') as HTMLElement | null;
-    const innerWidth = window.innerWidth;
-    const maxWidth = 840;
-    const logoScale = innerWidth <= maxWidth ? innerWidth / maxWidth : 1;
+    function updateLogoScale() {
+      const logoEl = document.querySelector('.logo-animation') as HTMLElement | null;
+      const innerWidth = window.innerWidth;
+      const maxWidth = 840;
+      // Create a more gradual scale reduction
+      const logoScale = Math.min(1, Math.max(0.3, innerWidth / maxWidth));
+      
+      if (logoEl) {
+        logoEl.style.transform = `translateY(50px) scale(${logoScale})`;
+      }
+    }
+
+    updateLogoScale();
+    
+    window.addEventListener('resize', updateLogoScale);
 
     function explodeParticles() {
       const krumelur = document.querySelector('.krumelur') as HTMLElement | null;
@@ -86,10 +97,6 @@ const LogoAnimation: React.FC = () => {
       }
     });
 
-    if (logoEl) {
-      logoEl.style.transform = 'translateY(50px) scale(' + logoScale + ')';
-    }
-
     logoTimeline
       .add({
         targets: '.dot-i',
@@ -104,14 +111,14 @@ const LogoAnimation: React.FC = () => {
         ],
         delay: s(1200),
         offset: 0
-      }, s(750)) 
+      }, s(750))
 
       .add({
         targets: '.fill.in',
         strokeDashoffset: {
           value: [anime.setDashoffset, 0],
           duration: s(600),
-          delay: (_el : HTMLElement, i: number) => s(700 + i * 100),
+          delay: (_el: HTMLElement, i: number) => s(700 + i * 100),
           easing: 'easeOutQuart',
         },
         stroke: {
@@ -163,7 +170,6 @@ const LogoAnimation: React.FC = () => {
         offset: 0
       }, s(-250))
 
-      // l
       .add({
         targets: '.letter-e',
         translateX: {
@@ -175,15 +181,15 @@ const LogoAnimation: React.FC = () => {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateLogoScale);
     };
   }, []);
 
   return (
-    // <div style={{ height: '100vh' }} className="logo-container">
-    <div className="logo-container flex items-center justify-center h-screen relative">
+    <div className="logo-container">
       <SocialIcons />
-      <div className="logo-animation">
-        <div className="letters" style={{ opacity: 0, visibility: 'hidden' }}>
+      <div className="logo-animation flex items-center justify-center w-full transform-origin-center">
+        <div className="letters relative" style={{ opacity: 0, visibility: 'hidden' }}>
           <div className="letter letter-m1">
             <svg viewBox="0 0 162 162">
               <g fill="none" fillRule="evenodd" stroke="#1CE2B2">
