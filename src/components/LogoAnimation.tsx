@@ -1,70 +1,65 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import anime from 'animejs';
 import SocialIcons from './SocialIcons';
 
 const LogoAnimation: React.FC = () => {
-  useEffect(() => {
-    const SPEED_FACTOR = 0.9;
-    const s = (value: number) => value * SPEED_FACTOR;
+  const SPEED_FACTOR = 0.9;
+  const s = (value: number) => value * SPEED_FACTOR;
 
+  const explodeParticles = useCallback(() => {
+    const krumelur = document.querySelector('.krumelur') as HTMLElement | null;
+    if (!krumelur) return;
+
+    const rect = krumelur.getBoundingClientRect();
+    const numberOfParticles = 20;
+
+    for (let i = 0; i < numberOfParticles; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      document.body.appendChild(particle);
+
+      const scrollY = window.scrollY || window.pageYOffset;
+      particle.style.left = `${rect.left + window.scrollX}px`;
+      particle.style.top = `${rect.top + scrollY}px`;
+    }
+
+    anime({
+      targets: '.particle',
+      translateX: () => anime.random(-15, 15) + 'vw',
+      translateY: () => anime.random(-15, 15) + 'vh',
+      scale: [1, 0],
+      easing: 'easeOutCirc',
+      duration: s(1000),
+      complete: () => {
+        document.querySelectorAll('.particle').forEach(p => p.remove());
+      }
+    });
+  }, []);
+
+  const handleScroll = useCallback(() => {
+    anime.remove('.krumelur');
+    anime({
+      targets: '.krumelur',
+      scale: [0.5, 1, 0],
+      easing: 'easeInOutQuad',
+      duration: s(500),
+      complete: () => {
+        explodeParticles();
+      }
+    });
+    window.removeEventListener('scroll', handleScroll);
+  }, [explodeParticles]);
+
+  useEffect(() => {
     function updateLogoScale() {
       const logoEl = document.querySelector('.logo-animation') as HTMLElement | null;
       const innerWidth = window.innerWidth;
       const maxWidth = 840;
-      // Create a more gradual scale reduction
       const logoScale = Math.min(1, Math.max(0.3, innerWidth / maxWidth));
       
       if (logoEl) {
         logoEl.style.transform = `translateY(50px) scale(${logoScale})`;
       }
-    }
-
-    updateLogoScale();
-    
-    window.addEventListener('resize', updateLogoScale);
-
-    function explodeParticles() {
-      const krumelur = document.querySelector('.krumelur') as HTMLElement | null;
-      if (!krumelur) return;
-
-      const rect = krumelur.getBoundingClientRect();
-      const numberOfParticles = 20;
-
-      for (let i = 0; i < numberOfParticles; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        document.body.appendChild(particle);
-
-        const scrollY = window.scrollY || window.pageYOffset;
-        particle.style.left = `${rect.left + window.scrollX}px`;
-        particle.style.top = `${rect.top + scrollY}px`;
-      }
-
-      anime({
-        targets: '.particle',
-        translateX: () => anime.random(-15, 15) + 'vw',
-        translateY: () => anime.random(-15, 15) + 'vh',
-        scale: [1, 0],
-        easing: 'easeOutCirc',
-        duration: s(1000),
-        complete: () => {
-          document.querySelectorAll('.particle').forEach(p => p.remove());
-        }
-      });
-    }
-
-    function handleScroll() {
-      anime.remove('.krumelur');
-      anime({
-        targets: '.krumelur',
-        scale: [0.5, 1, 0],
-        easing: 'easeInOutQuad',
-        duration: s(500),
-        complete: () => {
-          explodeParticles();
-        }
-      });
-      window.removeEventListener('scroll', handleScroll);
     }
 
     function bounceTriangle() {
@@ -83,6 +78,9 @@ const LogoAnimation: React.FC = () => {
       });
     }
 
+    updateLogoScale();
+    window.addEventListener('resize', updateLogoScale);
+
     const logoTimeline = anime.timeline({
       begin: () => {
         const lettersEl = document.querySelector('.letters') as HTMLElement | null;
@@ -93,7 +91,9 @@ const LogoAnimation: React.FC = () => {
       },
       complete: () => {
         bounceTriangle();
-        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+        // explodeParticles();
+        // window.addEventListener('scroll', handleScroll);
       }
     });
 
@@ -112,7 +112,6 @@ const LogoAnimation: React.FC = () => {
         delay: s(1200),
         offset: 0
       }, s(750))
-
       .add({
         targets: '.fill.in',
         strokeDashoffset: {
@@ -134,7 +133,6 @@ const LogoAnimation: React.FC = () => {
         },
         offset: 0
       }, s(250))
-
       .add({
         targets: '.krumelur',
         opacity: { value: 1 },
@@ -162,14 +160,12 @@ const LogoAnimation: React.FC = () => {
           duration: s(250),
         }
       }, `-=${s(250)}`)
-
       .add({
         targets: ['.icon-text path', '.icon-text polygon'],
         opacity: { value: [0, 1], duration: s(100), easing: 'linear' },
         delay: (_, i: number) => s(3000 + i * 20),
         offset: 0
       }, s(-250))
-
       .add({
         targets: '.letter-e',
         translateX: {
@@ -180,11 +176,12 @@ const LogoAnimation: React.FC = () => {
       }, `-=${s(225)}`);
 
     return () => {
+      console.log("clean")
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateLogoScale);
     };
   }, []);
-
+  
   return (
     <div className="logo-container">
       <SocialIcons />
