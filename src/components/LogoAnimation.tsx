@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 import anime from 'animejs';
 import SocialIcons from './SocialIcons';
 
@@ -6,21 +6,52 @@ const LogoAnimation: React.FC = () => {
   const SPEED_FACTOR = 0.9;
   const s = (value: number) => value * SPEED_FACTOR;
 
-  const explodeParticles = useCallback(() => {
-    const krumelur = document.querySelector('.krumelur') as HTMLElement | null;
-    if (!krumelur) return;
+  function getLogoScale() {
+    const innerWidth = window.innerWidth;
+    const maxWidth = 840;
+    return Math.min(1, Math.max(0.3, innerWidth / maxWidth));
+  };
 
-    const rect = krumelur.getBoundingClientRect();
+  function explodeKrumelur() {
+    anime.remove('.krumelur');
+    anime({
+      targets: '.krumelur',
+      scale: [0.5, 1, 0],
+      easing: 'easeInOutQuad',
+      duration: s(500),
+      complete: () => {
+        createParticles();
+      }
+    });
+    window.removeEventListener('scroll', explodeKrumelur);
+  };
+
+  function createParticles() {
+    const container = document.querySelector('.logo-animation') as HTMLElement | null;
+    const krumelur = document.querySelector('.krumelur') as HTMLElement | null;
+    if (!container || !krumelur) return;
+
+    const rectContainer = container.getBoundingClientRect();
+    const rectKrumelur = krumelur.getBoundingClientRect();
     const numberOfParticles = 20;
+
+    const scale = getLogoScale();
+    
+    const baseOffsetLeft = rectKrumelur.left - rectContainer.left;
+    const baseOffsetTop = rectKrumelur.top - rectContainer.top;
+    const centeringOffset = (window.innerWidth < 600) ? (1 - scale) * 30 : 0;
+    
+    const offsetLeft = (baseOffsetLeft / scale) + centeringOffset;
+    const offsetTop = baseOffsetTop / scale;
 
     for (let i = 0; i < numberOfParticles; i++) {
       const particle = document.createElement('div');
       particle.classList.add('particle');
-      document.body.appendChild(particle);
+      container.appendChild(particle);
 
-      const scrollY = window.scrollY || window.pageYOffset;
-      particle.style.left = `${rect.left + window.scrollX}px`;
-      particle.style.top = `${rect.top + scrollY}px`;
+      particle.style.position = 'absolute';
+      particle.style.left = `${offsetLeft}px`;
+      particle.style.top = `${offsetTop}px`;
     }
 
     anime({
@@ -34,21 +65,7 @@ const LogoAnimation: React.FC = () => {
         document.querySelectorAll('.particle').forEach(p => p.remove());
       }
     });
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    anime.remove('.krumelur');
-    anime({
-      targets: '.krumelur',
-      scale: [0.5, 1, 0],
-      easing: 'easeInOutQuad',
-      duration: s(500),
-      complete: () => {
-        explodeParticles();
-      }
-    });
-    window.removeEventListener('scroll', handleScroll);
-  }, [explodeParticles]);
+  };
 
   useEffect(() => {
     function updateLogoScale() {
@@ -91,9 +108,7 @@ const LogoAnimation: React.FC = () => {
       },
       complete: () => {
         bounceTriangle();
-        handleScroll();
-        // explodeParticles();
-        // window.addEventListener('scroll', handleScroll);
+        explodeKrumelur();
       }
     });
 
@@ -101,14 +116,8 @@ const LogoAnimation: React.FC = () => {
       .add({
         targets: '.dot-i',
         translateY: { value: [-250, 0], duration: s(1250), elasticity: 400 },
-        rotate: {
-          value: [-90, 0],
-          duration: s(500),
-          easing: 'linear'
-        },
-        scale: [
-          { value: [0.5, 1], duration: s(1200), easing: 'easeOutQuart' },
-        ],
+        rotate: { value: [-90, 0], duration: s(500), easing: 'linear' },
+        scale: [{ value: [0.5, 1], duration: s(1200), easing: 'easeOutQuart' }],
         delay: s(1200),
         offset: 0
       }, s(750))
@@ -136,29 +145,10 @@ const LogoAnimation: React.FC = () => {
       .add({
         targets: '.krumelur',
         opacity: { value: 1 },
-        translateX: {
-          duration: s(250),
-          delay: s(500),
-          value: 60,
-          easing: 'easeOutQuint',
-        },
-        translateY: {
-          duration: s(250),
-          delay: s(1000),
-          value: 60,
-          easing: 'easeOutBack'
-        },
-        rotate: {
-          value: 360,
-          delay: s(500),
-          duration: s(510),
-          easing: 'easeOutQuint',
-        },
-        scale: {
-          value: 0.5,
-          delay: s(1000),
-          duration: s(250),
-        }
+        translateX: { duration: s(250), delay: s(500), value: 60, easing: 'easeOutQuint' },
+        translateY: { duration: s(250), delay: s(1000), value: 60, easing: 'easeOutBack' },
+        rotate: { value: 360, delay: s(500), duration: s(510), easing: 'easeOutQuint' },
+        scale: { value: 0.5, delay: s(1000), duration: s(250) }
       }, `-=${s(250)}`)
       .add({
         targets: ['.icon-text path', '.icon-text polygon'],
@@ -168,20 +158,15 @@ const LogoAnimation: React.FC = () => {
       }, s(-250))
       .add({
         targets: '.letter-e',
-        translateX: {
-          duration: s(100),
-          value: -16,
-          easing: 'easeOutQuint'
-        },
+        translateX: { duration: s(100), value: -16, easing: 'easeOutQuint' }
       }, `-=${s(225)}`);
 
     return () => {
-      console.log("clean")
-      window.removeEventListener('scroll', handleScroll);
+      console.log("Cleaning up...");
       window.removeEventListener('resize', updateLogoScale);
     };
   }, []);
-  
+
   return (
     <div className="logo-container">
       <SocialIcons />
@@ -228,7 +213,7 @@ const LogoAnimation: React.FC = () => {
           <div className="letter letter-i">
             <svg viewBox="0 0 82 162">
               <g fill="none" fillRule="evenodd" stroke="#FB155A">
-                <path className="fill in" strokeWidth="40" d="M 21,161 20.613365,81" style={{display:'inline'}} />
+                <path className="fill in" strokeWidth="40" d="M 21,161 20.613365,81" style={{ display: 'inline' }} />
               </g>
             </svg>
           </div>
@@ -243,9 +228,9 @@ const LogoAnimation: React.FC = () => {
             <div className="icon-text">
               <svg viewBox="0 0 160 62">
                 <g fill="#FBF3FB" fillRule="evenodd">
-                  <path d="m 102.72424,44.032665 0,-19.632636 4.06592,-5.514692 7.85648,-0.08499 -0.0164,25.14733" style={{display:'inline',fill:'none',stroke:'#fef7fa',strokeWidth:1.58346}} />
-                  <path d="m 114.63024,43.947677 0.0164,-25.14733 c 4.75846,0 7.88367,-0.02769 11.87288,-0.02769 l 0.0169,25.090034" style={{display:'inline',fill:'none',stroke:'#fef7fa',strokeWidth:1.58346}} />
-                  <polygon className="letter-e" points="159.123,18 159.123,19.368 143.427,19.368 143.427,29.664 158.187,29.664 158.187,31.032 143.427,31.032 143.427,42.336 159.303,42.336 159.303,43.704 141.843,43.704 141.843,18 " />
+                  <path d="m 102.72424,44.032665 0,-19.632636 4.06592,-5.514692 7.85648,-0.08499 -0.0164,25.14733" style={{ display: 'inline', fill: 'none', stroke: '#fef7fa', strokeWidth: 1.58346 }} />
+                  <path d="m 114.63024,43.947677 0.0164,-25.14733 c 4.75846,0 7.88367,-0.02769 11.87288,-0.02769 l 0.0169,25.090034" style={{ display: 'inline', fill: 'none', stroke: '#fef7fa', strokeWidth: 1.58346 }} />
+                  <polygon className="letter-e" points="159.123,18 159.123,19.368 143.427,19.368 143.427,29.664 158.187,29.664 158.187,31.032 143.427,31.032 143.427,42.336 159.303,42.336 159.303,43.704 141.843,43.704 141.843,18" />
                 </g>
               </svg>
             </div>
@@ -253,10 +238,10 @@ const LogoAnimation: React.FC = () => {
           <div className="dot dot-i">
             <svg viewBox="0 0 42 42">
               <g fill="none" fillRule="evenodd" stroke="#FB155A"> 
-                <path className="fill in" strokeWidth="40" d="M 21,1 V 40.756563" style={{display:'inline'}} />
+                <path className="fill in" strokeWidth="40" d="M 21,1 V 40.756563" style={{ display: 'inline' }} />
               </g>
             </svg>
-          </div>   
+          </div>
           <div className="dot krumelur">
             <svg viewBox="0 0 42 42">
               <g fill="#FB155A" fillRule="evenodd" stroke="#FB155A">
