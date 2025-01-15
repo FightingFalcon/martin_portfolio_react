@@ -179,12 +179,11 @@ function App() {
       carouselItems: [
         <CarouselItem key="1">
           <div className="w-full aspect-w-16 aspect-h-9">
-            <iframe 
+            <iframe
               src="https://player.vimeo.com/video/1045768463?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
-              >
-            </iframe>
+            ></iframe>
           </div>
         </CarouselItem>,
         <CarouselItem key="2">
@@ -279,13 +278,18 @@ function App() {
     <>
       <LogoAnimation />
       {projects.map((project, index) => (
+        // <div
+        //   key={project.id}
+        //   className={`flex w-screen h-screen overflow-hidden ${
+        //     index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+        //   }`}
         <div
           key={project.id}
-          className={`flex w-screen h-screen overflow-hidden ${
-            index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+          className={`flex flex-col w-screen min-h-screen md:h-screen md:flex-row overflow-hidden ${
+            index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
           }`}
         >
-          <div className="parent w-1/2 flex">
+          <div className="parent w-full md:w-1/2 flex">
             <StaggerLogo
               logoPath={project.logoPath}
               gridItemColor={project.gridItemColor}
@@ -293,7 +297,7 @@ function App() {
             />
           </div>
           <div
-            className="projectInfo w-1/2 flex flex-col items-start"
+            className="projectInfo w-full md:w-1/2 flex flex-col items-start"
             style={{ backgroundColor: project.backgroundColor }}
           >
             <div className="w-full">
