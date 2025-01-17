@@ -178,13 +178,12 @@ function App() {
       technologies: ["Unity", " C#", "Blender", "Adobe Suite"],
       carouselItems: [
         <CarouselItem key="1">
-          <div className="w-full aspect-w-16 aspect-h-9">
+          
             <iframe
               src="https://player.vimeo.com/video/1045768463?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
               allow="autoplay; fullscreen; picture-in-picture"
               allowFullScreen
             ></iframe>
-          </div>
         </CarouselItem>,
         <CarouselItem key="2">
           <ExpandableImage
@@ -228,8 +227,8 @@ function App() {
       backgroundColor: COLORS.TIPSY_TOWN_GREEN,
       technologies: ["Unity", "C#", "Blender", "UI/UX Design"],
       carouselItems: [
-        <CarouselItem key="1">Screenshot 1</CarouselItem>,
-        <CarouselItem key="2">
+        // <CarouselItem key="1">Screenshot 1</CarouselItem>,
+        <CarouselItem key="1">
           <div className="w-full aspect-w-16 aspect-h-9">
             <iframe
               src="https://player.vimeo.com/video/1040466568?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
@@ -239,7 +238,7 @@ function App() {
             ></iframe>
           </div>
         </CarouselItem>,
-        <CarouselItem key="3">Screenshot 3</CarouselItem>,
+        // <CarouselItem key="3">Screenshot 3</CarouselItem>,
       ],
     },
     {
@@ -247,7 +246,7 @@ function App() {
       name: "Portfolio",
       description: (
         <>
-          This sleek, &lt;1mb <b>Portfolio</b> is designed to showcase how
+          This sleek, &lt;0.5mb <b>Portfolio</b> is designed to showcase how
           microinteractions can be used without compromising performance.
           <br />
           <br />
