@@ -270,22 +270,15 @@ function App() {
       backgroundColor: COLORS.PORTFOILIO_GREEN,
       technologies: ["React", "TypeScript", "Vite", "Anime.js", "Tailwind"],
     },
-
-    // Add more projects as needed
   ];
 
   return (
     <>
       <LogoAnimation />
       {projects.map((project, index) => (
-        // <div
-        //   key={project.id}
-        //   className={`flex w-screen h-screen overflow-hidden ${
-        //     index % 2 === 0 ? "flex-row" : "flex-row-reverse"
-        //   }`}
         <div
           key={project.id}
-          className={`flex flex-col w-screen min-h-screen md:h-screen md:flex-row overflow-hidden ${
+          className={`flex flex-col w-screen min-h-full md:min-h-screen md:flex-row overflow-visible ${
             index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
           }`}
         >
@@ -324,7 +317,6 @@ function App() {
             <div className="flex-grow flex items-center justify-center text-left p-16 md:px-24 text-white">
               <p>{project.description}</p>
             </div>
-
             <div className="container mx-auto mt-4 px-4 md:px-32">
               <div className="flex flex-wrap">
                 {project.technologies.map((tech) => (
