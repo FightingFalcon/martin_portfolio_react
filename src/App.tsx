@@ -321,10 +321,11 @@ function App() {
                 )}
               </div>
             </div>
-            <div className="flex-grow flex items-center justify-center text-left pl-32 pr-32 text-white">
+            <div className="flex-grow flex items-center justify-center text-left p-16 md:px-24 text-white">
               <p>{project.description}</p>
             </div>
-            <div className="container mx-auto mt-4 pl-32 pr-32">
+
+            <div className="container mx-auto mt-4 px-4 md:px-32">
               <div className="flex flex-wrap">
                 {project.technologies.map((tech) => (
                   <Tag key={tech} label={tech} />
