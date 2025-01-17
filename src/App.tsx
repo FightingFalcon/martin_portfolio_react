@@ -289,7 +289,7 @@ function App() {
             index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
           }`}
         >
-          <div className="parent w-full md:w-1/2 flex">
+          <div className="w-full bg-white md:w-1/2 flex">
             <StaggerLogo
               logoPath={project.logoPath}
               gridItemColor={project.gridItemColor}

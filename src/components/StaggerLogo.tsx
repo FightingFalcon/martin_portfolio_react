@@ -51,7 +51,6 @@ const StaggerLogo: React.FC<StaggerLogoProps> = ({
 
   useEffect(() => {
     if (!animationRef.current) return;
-
     if (isMostlyVisible) {
       animationRef.current.play();
     } else {
@@ -80,7 +79,8 @@ const StaggerLogo: React.FC<StaggerLogoProps> = ({
       })
       .join("");
 
-    const gridWidth = columns * gridItemSize;
+    // Set the grid width based on columns x item size
+    const gridWidth = columns * gridItemSize; // e.g. 15 * 24 = 360
     grid.style.width = `${gridWidth}px`;
     grid.style.margin = "0 auto";
   };
@@ -115,16 +115,19 @@ const StaggerLogo: React.FC<StaggerLogoProps> = ({
 
   return (
     <div
-      className="stagger-container relative flex items-center justify-center overflow-hidden"
+      className="stagger-container bg-white relative flex items-center justify-center overflow-hidden scale-50 md:scale-100"
       ref={containerRef}
       style={
         {
           "--grid-item-color": gridItemColor,
           height: "100%",
+          transformOrigin: "center", // Ensure the scaling is anchored from the center
         } as React.CSSProperties
       }
     >
-      <div className="stagger-grid flex flex-wrap justify-center"></div>
+      <div className="stagger-grid flex flex-wrap justify-center">
+        {/* Grid is populated dynamically */}
+      </div>
       <img
         src={logoPath}
         alt="Logo"

@@ -254,6 +254,18 @@ body {
   background-color: white;
 }
 
+/* .stagger-grid {
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .stagger-grid {
+    transform: scale(0.75);
+  }
+} */
+
 .stagger-grid {
   display: flex;
   flex-wrap: wrap;
