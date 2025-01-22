@@ -252,7 +252,7 @@ function App() {
           <br />
           Why not have a look at the project on{" "}
           <a
-            href="https://www.twitch.tv/martinsaturnia"
+            href="https://github.com/FightingFalcon/martin_portfolio_react"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -323,7 +323,6 @@ function App() {
             <div className="flex-grow flex items-center justify-center text-left p-16 md:px-24 text-white">
               <p>{project.description}</p>
             </div>
-
             <div className="container mx-auto mt-4 px-4 md:px-32">
               <div className="flex flex-wrap">
                 {project.technologies.map((tech) => (
