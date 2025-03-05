@@ -163,6 +163,32 @@ function App() {
     },
     {
       id: 4,
+      name: "Cryptobase",
+      description: (
+        <>
+          <del>
+            I was tasked with redesigning their desktop trading application using <b>Figma</b>,
+            focusing on improving the user experience and modernizing the interface for cryptocurrency traders.
+          </del>
+          <br/>
+          <br/>
+          The company has since pivoted their strategy and I was tasked with creating a landing page for selling their domain.
+        </>
+      ),
+      subtitle: "Visit website",
+      subtitle_url: "https://cryptobase-frontend.pages.dev/",
+      logoPath: "/cryptobase.svg",
+      logoSize: 175,
+      gridItemColor: "#4550ab",
+      backgroundColor: "#4550ab",
+      technologies: [
+        "Three.JS",
+        "Gsap",
+        "TypeScript",
+      ],
+    },
+    {
+      id: 5,
       name: "House of Chili",
       description: (
         <>
@@ -186,7 +212,7 @@ function App() {
       ],
     },
     {
-      id: 5,
+      id: 6,
       name: "KidIca",
       description: (
         <>
@@ -235,7 +261,7 @@ function App() {
       ],
     },
     {
-      id: 6,
+      id: 7,
       name: "Tipsy Town",
       subtitle: "View on Google Play Store",
       subtitle_url:
@@ -267,7 +293,7 @@ function App() {
       ],
     },
     {
-      id: 7,
+      id: 8,
       name: "Portfolio",
       description: (
         <>
