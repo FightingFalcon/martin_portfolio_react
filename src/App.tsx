@@ -35,7 +35,6 @@ function App() {
         "Gsap",
         "TailwindCSS",
         "TypeScript",
-        "Vercel",
       ],
     },
     {
