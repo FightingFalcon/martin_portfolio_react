@@ -18,7 +18,7 @@ function App() {
         <>
           <b>Capture Race</b> is an <b>AI-powered</b>, fast-paced{" "}
           <b>multiplayer puzzle</b> and <b>escape room game</b> for four friends
-          to test your collective intelligence under pressure. It’s all about
+          to test your collective intelligence under pressure. It's all about
           teamwork, logic, and speed. <br />
           <br />
           Join me over on{" "}
@@ -262,7 +262,7 @@ function App() {
         </>
       ),
       subtitle: "View on GitHub",
-      subtitle_url: "github.com/your-github-portfolio",
+      subtitle_url: "https://github.com/FightingFalcon/martin_portfolio_react",
       logoPath: "/favicon.svg",
       logoSize: 150,
       gridItemColor: COLORS.PORTFOILIO_GREEN,
@@ -307,7 +307,7 @@ function App() {
                 {project.subtitle_url ? (
                   <h6 className="text-xl">
                     <a
-                      href={`https://${project.subtitle_url}`}
+                      href={project.subtitle_url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white underline"
