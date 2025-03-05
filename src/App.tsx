@@ -12,6 +12,33 @@ import ExpandableImage from "./components/ExpandableImage";
 function App() {
   const projects = [
     {
+      id: 0,
+      name: "Cellar Door",
+      description: (
+        <>
+          <b>Cellar Door</b> is a consultancy firm based in Borås, Sweden, 
+          seeking to enhance their website. I was entrusted with designing 
+          a more dynamic and engaging website while ensuring ease of maintenance and updates. 
+          Following rules for accessibility and SEO was a must.
+        </>
+      ),
+      subtitle: "Visit website",
+      subtitle_url: "https://cellar-door-un67.vercel.app",
+      logoPath: "/cellar-door.svg",
+      logoSize: 125,
+      gridItemColor: "#000000",
+      backgroundColor: "#1a1a1a",
+      technologies: [
+        "Three.JS",
+        "NextJS",
+        "Shaders",
+        "Gsap",
+        "TailwindCSS",
+        "TypeScript",
+        "Vercel",
+      ],
+    },
+    {
       id: 1,
       name: "Capture Race",
       description: (
@@ -73,7 +100,7 @@ function App() {
         </>
       ),
       subtitle: "Visit website",
-      subtitle_url: "www.baldseagullbrigade.com",
+      subtitle_url: "https://www.baldseagullbrigade.com",
       logoPath: "/bsb.svg",
       logoSize: 160,
       gridItemColor: "#1a1a1a",
@@ -147,7 +174,7 @@ function App() {
       ),
       logoPath: "/house_of_chili.svg",
       subtitle: "Visit website",
-      subtitle_url: "house-of-chili-vite.vercel.app",
+      subtitle_url: "https://www.houseofchili.com",
       logoSize: 190,
       gridItemColor: COLORS.HOUSE_OF_CHILI_BROWN,
       backgroundColor: COLORS.HOUSE_OF_CHILI_BROWN,
@@ -213,12 +240,11 @@ function App() {
       name: "Tipsy Town",
       subtitle: "View on Google Play Store",
       subtitle_url:
-        "play.google.com/store/apps/details?id=com.mariel.tipsytown",
+        "https://play.google.com/store/apps/details?id=com.mariel.tipsytown",
       description: (
         <>
-          <b>Tipsy Town</b> is a party game designed to bring friends together
-          for fun-filled challenges and competitions. It was initially created
-          as a board game for a bachelor's party but was made as a mobile app.
+          <b>Tipsy Town</b> wasa party game designed for mobile. It was initially created
+          as a board game for a bachelor's party but was made as a mobile app. It is no longer available on the Play Store.
         </>
       ),
       logoPath: "/tipsytown.svg",
