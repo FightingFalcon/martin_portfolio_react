@@ -127,52 +127,46 @@ function App() {
         </CarouselItem>,
       ],
     },
-    {
-      id: 3,
-      name: "Ketonean",
-      description: (
-        <>
-          <b>Ketonean</b> is a health- and meal tracking app, designed for those
-          who are on a ketogenic diet. It helps you keep track of your daily
-          intake of macronutrients and provides you with a daily meal plan based
-          on your goals. It is being built using Next.js.
-        </>
-      ),
-      logoPath: "/ketonean.svg",
-      subtitle: "(In Development)",
-      logoSize: 160,
-      gridItemColor: COLORS.KETONEAN_PURPLE,
-      backgroundColor: COLORS.KETONEAN_PURPLE,
-      technologies: [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Postgres",
-        "Tailwind",
-        "AI",
-        "OpenAI",
-        "NextAuth",
-        "Recharts",
-        "Zustand",
-      ],
-      // carouselItems: [
-      //   <CarouselItem key="1">Feature 1</CarouselItem>,
-      //   <CarouselItem key="2">Feature 2</CarouselItem>,
-      //   <CarouselItem key="3">Feature 3</CarouselItem>,
-      // ],
-    },
+    // {
+    //   id: 3,
+    //   name: "Ketonean",
+    //   description: (
+    //     <>
+    //       <b>Ketonean</b> is a health- and meal tracking app, designed for those
+    //       who are on a ketogenic diet. It helps you keep track of your daily
+    //       intake of macronutrients and provides you with a daily meal plan based
+    //       on your goals. It is being built using Next.js.
+    //     </>
+    //   ),
+    //   logoPath: "/ketonean.svg",
+    //   subtitle: "(In Development)",
+    //   logoSize: 160,
+    //   gridItemColor: COLORS.KETONEAN_PURPLE,
+    //   backgroundColor: COLORS.KETONEAN_PURPLE,
+    //   technologies: [
+    //     "Next.js",
+    //     "React",
+    //     "TypeScript",
+    //     "Postgres",
+    //     "Tailwind",
+    //     "AI",
+    //     "OpenAI",
+    //     "NextAuth",
+    //     "Recharts",
+    //     "Zustand",
+    //   ],
+    //   // carouselItems: [
+    //   //   <CarouselItem key="1">Feature 1</CarouselItem>,
+    //   //   <CarouselItem key="2">Feature 2</CarouselItem>,
+    //   //   <CarouselItem key="3">Feature 3</CarouselItem>,
+    //   // ],
+    // },
     {
       id: 4,
       name: "Cryptobase",
       description: (
         <>
-          <del>
-            I was tasked with redesigning their desktop trading application using <b>Figma</b>,
-            focusing on improving the user experience and modernizing the interface for cryptocurrency traders.
-          </del>
-          <br/>
-          <br/>
-          The company has since pivoted their strategy and I was tasked with creating a landing page for selling their domain.
+        I had previously helped them design their app in Figma but as they move into the next phase of their business I also created a landing page for them to sell their domain and created an AI agent to handle their social media automatically.
         </>
       ),
       subtitle: "Visit website",
