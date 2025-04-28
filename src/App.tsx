@@ -170,7 +170,7 @@ function App() {
         </>
       ),
       subtitle: "Visit website",
-      subtitle_url: "https://cryptobase-frontend.pages.dev/",
+      subtitle_url: "https://cryptobase.com/",
       logoPath: "/cryptobase.svg",
       logoSize: 175,
       gridItemColor: "#4550ab",
